@@ -76,7 +76,6 @@
 
 <script>
     export default {
-
         async asyncData({ $axios }){
             try {
                 let categories = $axios.$get('http://localhost:3000/api/categories');
