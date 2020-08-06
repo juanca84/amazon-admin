@@ -22,7 +22,7 @@
           <div class="history-box">
             <!-- PRODUCT IMAGE -->
             <a href="#" class="a-link-normal">
-              <img :src="product.photo" alt="img-fluid">
+              <img :src="product.photo" alt="img-fluid" width="210">
             </a>
             <div class="a-spacing-top-base asin-title">
               <span class="a-text-normal">
@@ -50,7 +50,7 @@
             <!-- product Buttons -->
             <div class="a-row">
               <nuxt-link :to="`/products/${product._id}`" class="a-button-history margin-right-10">Update</nuxt-link>
-              <a href="#" class="a-button-history margin-right-10">Delete</a>
+              <a href="#" class="a-button-history margin-right-10" @click="onDeleteProduct(product._id, index)">Delete</a>
             </div>
           </div>
         </div>
@@ -71,7 +71,20 @@ export default {
     } catch (err) {
 
     }
-  }
+  },
+  methods: {
+    async onDeleteProduct(id, index) {
+      try {
+        let response = await this.$axios.$delete(`http://localhost:3000/api/products/${id}`)
+        console.log(response);
+        if (response.success) {
+          this.products.splice(index, 1);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  } 
 }
 </script>
 
