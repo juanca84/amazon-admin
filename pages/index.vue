@@ -7,14 +7,15 @@
         <div class="col-sm-8 col-8">
           <h1 class="a-size-large a-spacing-none a-text-normal">All products</h1>
           <!-- button -->
-          <a href="#" class="a-button-buy-again">Add a new product</a>
-          <a href="#" class="a-button-history margin-right-10">Add a new category</a>
-          <a href="#" class="a-button-history margin-right-10">Add a new owner</a>
+          <nuxt-link to="/products" class="a-button-buy-again">Add a new product</nuxt-link>
+          <nuxt-link to="/category" class="a-button-history margin-right-10">Add a new category</nuxt-link>
+          <nuxt-link to="/owner" class="a-button-history margin-right-10">Add a new owner</nuxt-link>
           <!-- Listing page -->
         </div>
       </div>
     </div>
     <div class="a-spacing-large"></div>
+
     <div class="container-fluid browsing-history">
       <div class="row">
         <div v-for="(product, index) in products" class="col-xl-2 col-lg-2 col-md-3 col-sm-6 col-6 br bb" :key="product._id">
@@ -48,7 +49,7 @@
             </div>
             <!-- product Buttons -->
             <div class="a-row">
-              <a href="#" class="a-button-history margin-right-10">Update</a>
+              <nuxt-link :to="`/products/${product._id}`" class="a-button-history margin-right-10">Update</nuxt-link>
               <a href="#" class="a-button-history margin-right-10">Delete</a>
             </div>
           </div>
